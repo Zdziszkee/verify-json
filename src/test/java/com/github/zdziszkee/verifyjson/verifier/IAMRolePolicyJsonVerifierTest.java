@@ -16,17 +16,17 @@ class IAMRolePolicyJsonVerifierTest {
 
     @Test
     void verifyCorrectInputWithAsterisk() throws URISyntaxException, IOException {
-        final URI resource = getClass().getClassLoader().getResource("correct-input-with-asterisk.json").toURI();
-        String json = Files.readString(Paths.get(resource));
-
-        assertFalse(verifier.verify(json));
+        assertFalse(verifier.verify(loadJsonFromFile("./correct-input-with-asterisk.json")));
     }
 
     @Test
     void verifyCorrectInputWithoutAsterisk() throws URISyntaxException, IOException {
-        final URI resource = getClass().getClassLoader().getResource("./correct-input-without-asterisk.json").toURI();
-        String json = Files.readString(Paths.get(resource));
+        assertTrue(verifier.verify(loadJsonFromFile("./correct-input-without-asterisk.json")));
+    }
 
-        assertTrue(verifier.verify(json));
+    private String loadJsonFromFile(String path) throws IOException, URISyntaxException {
+
+        final URI resource = getClass().getClassLoader().getResource(path).toURI();
+        return Files.readString(Paths.get(resource));
     }
 }
