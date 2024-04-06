@@ -1,9 +1,8 @@
 package com.github.zdziszkee.verifyjson.verifier;
 
-import com.github.zdziszkee.verifyjson.exception.InvalidIAMRolePolicyException;
-import com.github.zdziszkee.verifyjson.exception.JsonDeserializationException;
+import com.github.zdziszkee.verifyjson.exception.IAMRolePolicyJsonParsingException;
 
 public interface IAMRolePolicyJsonVerifier {
 
-    boolean verify(String json) throws JsonDeserializationException, InvalidIAMRolePolicyException;
+    boolean verify(String json) throws IAMRolePolicyJsonParsingException;
 }
