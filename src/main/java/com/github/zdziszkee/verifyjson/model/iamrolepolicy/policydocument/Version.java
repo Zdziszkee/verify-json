@@ -1,4 +1,4 @@
-package com.github.zdziszkee.verifyjson.model;
+package com.github.zdziszkee.verifyjson.model.iamrolepolicy.policydocument;
 
 public enum Version {
     _2012_10_17("2012-10-17"),

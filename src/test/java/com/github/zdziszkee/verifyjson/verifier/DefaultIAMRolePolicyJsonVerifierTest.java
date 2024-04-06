@@ -1,5 +1,6 @@
 package com.github.zdziszkee.verifyjson.verifier;
 
+import com.github.zdziszkee.verifyjson.exception.InvalidIAMRolePolicyException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,16 +12,16 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class IAMRolePolicyJsonVerifierTest {
-    private final JsonVerifier verifier = new IAMRolePolicyJsonVerifier();
+class DefaultIAMRolePolicyJsonVerifierTest {
+    private final IAMRolePolicyJsonVerifier verifier = new DefaultIAMRolePolicyJsonVerifier();
 
     @Test
-    void verifyCorrectInputWithAsterisk() throws URISyntaxException, IOException {
+    void verifyCorrectInputWithAsterisk() throws URISyntaxException, IOException, InvalidIAMRolePolicyException {
         assertFalse(verifier.verify(loadJsonFromFile("./correct-input-with-asterisk.json")));
     }
 
     @Test
-    void verifyCorrectInputWithoutAsterisk() throws URISyntaxException, IOException {
+    void verifyCorrectInputWithoutAsterisk() throws URISyntaxException, IOException, InvalidIAMRolePolicyException {
         assertTrue(verifier.verify(loadJsonFromFile("./correct-input-without-asterisk.json")));
     }
 

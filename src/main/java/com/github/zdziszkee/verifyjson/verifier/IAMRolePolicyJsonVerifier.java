@@ -1,21 +1,9 @@
 package com.github.zdziszkee.verifyjson.verifier;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.zdziszkee.verifyjson.exception.InvalidIAMRolePolicyException;
+import com.github.zdziszkee.verifyjson.exception.JsonDeserializationException;
 
-public class IAMRolePolicyJsonVerifier implements JsonVerifier {
-    private final ObjectMapper mapper = new ObjectMapper();
+public interface IAMRolePolicyJsonVerifier {
 
-    @Override
-    public boolean verify(String json) {
-
-        try {
-            JsonNode root = mapper.readTree(json);
-
-        } catch (JsonProcessingException exception) {
-            return true;
-        }
-        return false;
-    }
+    boolean verify(String json) throws JsonDeserializationException, InvalidIAMRolePolicyException;
 }
